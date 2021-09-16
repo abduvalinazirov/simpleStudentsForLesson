@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(maxAge = 3600L)
 public class AdminController {
   private final StudentService studentService;
   private final StudentRepository studentRepository;
@@ -21,8 +21,6 @@ public class AdminController {
     this.studentService = studentService;
     this.studentRepository = studentRepository;
   }
-
-
 
   @PostMapping("/student/add")
   private ResponseEntity save(@RequestBody StudentPayload studentPayload) {
@@ -50,6 +48,5 @@ public class AdminController {
       return (ResponseEntity) ResponseEntity.notFound();
     }
   }
-
 
 }
